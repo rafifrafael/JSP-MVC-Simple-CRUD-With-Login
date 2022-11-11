@@ -109,12 +109,36 @@
                      
             <tr>
             	<td><a class="btn btn-primary" role="button" href="editformuser.jsp?id=<%=d.getId() %>">Edit</a> |
-					<a class="btn btn-danger" role="button" href="deleteuser.jsp?id=<%=d.getId() %>">Delete</a></td>
+				<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete_<%=d.getId()%>">Delete</button></td>
 				<td></td>
-            </tr>
-            
+            </tr>            
         </table>
         </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="delete_<%=d.getId()%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				  <div class="modal-dialog">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Record</h1>
+				        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				      </div>
+				      <div class="modal-body">
+				        <form action="./deleteuser" method="post">
+							<input type=text name="id" value="<%=d.getId()%>" hidden>
+							<p>are you sure want to delete this record?</p>
+							<p>record ID : <b><%=d.getId()%></b></p>
+						
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+				        <input type="submit" class="btn btn-danger" value="Yes">
+				      </div>
+				      </form>
+				    </div>
+				  </div>
+				</div>
+				<!-- End Modal -->
         
     <footer class="fixed-bottom bg-light text-center text-lg-start">
 	  <!-- Copyright -->
